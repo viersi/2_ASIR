@@ -7,7 +7,7 @@ def sumar():
         num2 = float(entrada2.get())
         resultado = num1 + num2
         resultado_lb.config(text=f"{resultado}")
-    except:
+    except ValueError:
         resultado_lb.config(text="Entrada no valida")
 
 def restar():
@@ -16,7 +16,7 @@ def restar():
         num2 = float(entrada2.get())
         resultado = num1 - num2
         resultado_lb.config(text=f"{resultado}")
-    except:
+    except ValueError:
         resultado_lb.config(text="Entrada no valida")
 
 def multiplicar():
@@ -25,7 +25,7 @@ def multiplicar():
         num2 = float(entrada2.get())
         resultado = num1 * num2
         resultado_lb.config(text=f"{resultado}")
-    except:
+    except ValueError:
         resultado_lb.config(text="Entrada no valida")
     
 def dividir():
@@ -34,7 +34,7 @@ def dividir():
         num2 = float(entrada2.get())
         resultado = num1 / num2
         resultado_lb.config(text=resultado)
-    except:
+    except (ValueError, ZeroDivisionError):
         resultado_lb.config(text="Entrada no valida")
 
 ventana = tk.Tk()
