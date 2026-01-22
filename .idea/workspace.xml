@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d89e5681-c878-41e4-bd3e-497263eadd0a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/12.1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/12.2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/14.1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/15.1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/15.2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/19.1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/19.2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/22.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/Landscape_Víctor_Cordeiro.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ASO/Landscape/c9f724b2-d18a-4e9c-829b-812e6300b0da.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Digitalizacion/mineria_datos/Mineria_Datos_Víctor_Cordeiro.xlsx" afterDir="false" />
-    </list>
+    <list default="true" id="d89e5681-c878-41e4-bd3e-497263eadd0a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,25 +10,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="38WXWp8tfpolB8wNhXQR2mEuBTB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "git-widget-placeholder": "main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -74,6 +45,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768916340349</updated>
       <workItem from="1768916342488" duration="36000" />
+      <workItem from="1769067345383" duration="51000" />
     </task>
     <servers />
   </component>
