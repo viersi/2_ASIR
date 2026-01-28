@@ -6,6 +6,7 @@ class Coche:
     def acelerar(self, cantidad):
         try:
             if cantidad < 0:
+#raise genera un error intencionadamente para que pueda ser manejado por un except.
                 raise ValueError
             else:
                 self.velocidad += cantidad

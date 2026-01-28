@@ -1,7 +1,9 @@
 class Producto:
     def __init__(self, nombre, precio):
+#Al poner _ antes de un atributo lo hacemos privado, haciendo que no sea accesible desde fuera del objeto.
         self._nombre = nombre
         self._precio = precio
+#Podemos usar un metodo del objeto que nos devuelva los atributos privados
     def get_nombre(self):
         return self._nombre
     def get_precio(self):
