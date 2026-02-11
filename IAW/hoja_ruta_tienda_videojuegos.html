@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Ruta - Proyecto Tienda Videojuegos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 4px solid #667eea;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .timeline-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .timeline {
+            width: 80px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 39px;
+            top: 50px;
+            bottom: 50px;
+            width: 4px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .timeline-day {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            color: #667eea;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .timeline-day.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .areas-container {
+            flex: 1;
+        }
+
+        .area-block {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .area-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+
+        .area-block.setup { border-color: #3498db; background: linear-gradient(to right, #3498db05, transparent); }
+        .area-block.navegacion { border-color: #2ecc71; background: linear-gradient(to right, #2ecc7105, transparent); }
+        .area-block.escritura { border-color: #f39c12; background: linear-gradient(to right, #f39c1205, transparent); }
+        .area-block.pedidos { border-color: #9b59b6; background: linear-gradient(to right, #9b59b605, transparent); }
+        .area-block.seguridad { border-color: #e74c3c; background: linear-gradient(to right, #e74c3c05, transparent); }
+        .area-block.pulido { border-color: #e91e63; background: linear-gradient(to right, #e91e6305, transparent); }
+
+        .area-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #ddd;
+        }
+
+        .area-emoji {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        .area-info {
+            flex: 1;
+        }
+
+        .area-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .area-block.setup .area-title { color: #3498db; }
+        .area-block.navegacion .area-title { color: #2ecc71; }
+        .area-block.escritura .area-title { color: #f39c12; }
+        .area-block.pedidos .area-title { color: #9b59b6; }
+        .area-block.seguridad .area-title { color: #e74c3c; }
+        .area-block.pulido .area-title { color: #e91e63; }
+
+        .area-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .meta-badge {
+            background: #f5f5f5;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .day-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .fase-item {
+            background: #fafafa;
+            border-left: 4px solid #ddd;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            display: grid;
+            grid-template-columns: 120px 180px 1fr 80px 100px;
+            gap: 15px;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .fase-item.sprint {
+            border-left-color: #e74c3c;
+            background: #fff5f5;
+        }
+
+        .fase-code {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .fase-nombre {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .fase-archivos {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .fase-tiempo {
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .fase-tipo {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .fase-tipo.sprint {
+            color: #e74c3c;
+        }
+
+        .fase-tipo.pausable {
+            color: #2ecc71;
+        }
+
+        .archivos-section {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .archivos-section .file { color: #f92672; }
+        .archivos-section .comment { color: #75715e; }
+
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+
+        .info-box.warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .info-box.success {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .info-box.info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+        }
+
+        .info-box h3 {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+        }
+
+        .info-box li {
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .progress-summary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .progress-summary h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+            .area-block { page-break-inside: avoid; }
+        }
+
+        @media (max-width: 1200px) {
+            .fase-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .timeline-wrapper {
+                flex-direction: column;
+            }
+            .timeline {
+                width: 100%;
+                display: flex;
+                overflow-x: auto;
+            }
+            .timeline-line { display: none; }
+            .timeline-day {
+                margin-right: 20px;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Hoja de Ruta: Proyecto Tienda Videojuegos</h1>
+            <p class="subtitle">Sistema de gestión de inventario con PHP + PDO + MySQL</p>
+        </header>
+
+        <div class="timeline-wrapper">
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-day active">D1</div>
+                <div class="timeline-day active">D2</div>
+                <div class="timeline-day active">D3</div>
+                <div class="timeline-day">D4-7</div>
+            </div>
+
+            <div class="areas-container">
+
+                <!-- ÁREA 1: SETUP -->
+                <div class="area-block setup">
+                    <div class="area-header">
+                        <div class="area-emoji">🔧</div>
+                        <div class="area-info">
+                            <div class="area-title">ÁREA 1: SETUP Y BASE</div>
+                            <div class="area-meta">
+                                <span class="day-badge">DÍA 1 - MAÑANA</span>
+                                <span class="meta-badge">⏱️ 50min total</span>
+                                <span class="meta-badge">✅ Pausable completo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">0. Setup inicial</div>
+                        <div class="fase-nombre">Base de datos y PDO</div>
+                        <div class="fase-archivos">
+                            <strong>config.php:</strong> $pdo = new PDO()<br>
+                            <strong>SQL:</strong> CREATE TABLE productos
+                        </div>
+                        <div class="fase-tiempo">20-30min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">1A. Listado básico</div>
+                        <div class="fase-nombre">Query simple</div>
+                        <div class="fase-archivos">
+                            <strong>productos.php:</strong> $pdo->query()<br>
+                            Tabla HTML con foreach
+                        </div>
+                        <div class="fase-tiempo">30min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+                </div>
+
+                <!-- ÁREA 2: NAVEGACIÓN -->
+                <div class="area-block navegacion">
+                    <div class="area-header">
+                        <div class="area-emoji">📊</div>
+                        <div class="area-info">
+                            <div class="area-title">ÁREA 2: NAVEGACIÓN</div>
+                            <div class="area-meta">
+                                <span class="day-badge">DÍA 1 - TARDE</span>
+                                <span class="meta-badge">⏱️ 2-2.5h total</span>
+                                <span class="meta-badge">🔴 Sprint 1B+1D juntas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">1B. Paginación</div>
+                        <div class="fase-nombre">LIMIT/OFFSET dinámico</div>
+                        <div class="fase-archivos">
+                            <strong>productos.php:</strong><br>
+                            $offset = ($pagina-1)*8<br>
+                            LIMIT ? OFFSET ?
+                        </div>
+                        <div class="fase-tiempo">45-60min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">1C. Links paginación</div>
+                        <div class="fase-nombre">Navegación páginas</div>
+                        <div class="fase-archivos">
+                            <strong>productos.php:</strong><br>
+                            SELECT COUNT(*), links href
+                        </div>
+                        <div class="fase-tiempo">30min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">1D. Filtro consola</div>
+                        <div class="fase-nombre">WHERE dinámico</div>
+                        <div class="fase-archivos">
+                            <strong>productos.php:</strong><br>
+                            WHERE consola = ?<br>
+                            Botones filtro por $_GET
+                        </div>
+                        <div class="fase-tiempo">45min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+                </div>
+
+                <!-- ÁREA 3: ESCRITURA -->
+                <div class="area-block escritura">
+                    <div class="area-header">
+                        <div class="area-emoji">✏️</div>
+                        <div class="area-info">
+                            <div class="area-title">ÁREA 3: ESCRITURA DE DATOS</div>
+                            <div class="area-meta">
+                                <span class="day-badge">DÍA 2 - MAÑANA</span>
+                                <span class="meta-badge">⏱️ 1h 15min total</span>
+                                <span class="meta-badge">🔴 Sprint 2B+2D juntas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">2A. Form HTML</div>
+                        <div class="fase-nombre">Formulario insertar</div>
+                        <div class="fase-archivos">
+                            <strong>nuevo.php (crear):</strong><br>
+                            &lt;form method="POST"&gt;<br>
+                            Inputs: nombre, consola, precio, stock
+                        </div>
+                        <div class="fase-tiempo">15min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">2B. INSERT</div>
+                        <div class="fase-nombre">Sentencia preparada</div>
+                        <div class="fase-archivos">
+                            <strong>nuevo.php:</strong><br>
+                            $stmt->prepare("INSERT...")<br>
+                            $stmt->execute([...])
+                        </div>
+                        <div class="fase-tiempo">30min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">2C. Validación</div>
+                        <div class="fase-nombre">Checks pre-INSERT</div>
+                        <div class="fase-archivos">
+                            <strong>nuevo.php:</strong><br>
+                            if($precio&lt;0 || empty())<br>
+                            Variable $error
+                        </div>
+                        <div class="fase-tiempo">20min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">2D. Redirección</div>
+                        <div class="fase-nombre">Header tras guardar</div>
+                        <div class="fase-archivos">
+                            <strong>nuevo.php:</strong><br>
+                            header("Location: ..."); exit;
+                        </div>
+                        <div class="fase-tiempo">10min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+                </div>
+
+                <!-- ÁREA 4: PEDIDOS -->
+                <div class="area-block pedidos">
+                    <div class="area-header">
+                        <div class="area-emoji">🛒</div>
+                        <div class="area-info">
+                            <div class="area-title">ÁREA 4: GESTIÓN DE PEDIDOS</div>
+                            <div class="area-meta">
+                                <span class="day-badge">DÍA 2 - TARDE</span>
+                                <span class="meta-badge">⏱️ 1h 40min total</span>
+                                <span class="meta-badge">🔴 Sprint solo 3C</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">3A. Session start</div>
+                        <div class="fase-nombre">Iniciar sesiones</div>
+                        <div class="fase-archivos">
+                            <strong>Modificar todos:</strong><br>
+                            session_start() línea 1<br>
+                            productos, nuevo, pedido.php
+                        </div>
+                        <div class="fase-tiempo">10min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">3B. Añadir pedido</div>
+                        <div class="fase-nombre">Guardar ID en array</div>
+                        <div class="fase-archivos">
+                            <strong>productos.php:</strong><br>
+                            $_SESSION['pedido'][] = $id<br>
+                            Link ?action=add&id=
+                        </div>
+                        <div class="fase-tiempo">30min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">3C. Página pedido</div>
+                        <div class="fase-nombre">Mostrar seleccionados</div>
+                        <div class="fase-archivos">
+                            <strong>pedido.php (crear):</strong><br>
+                            WHERE id IN(...)<br>
+                            implode() sesión
+                        </div>
+                        <div class="fase-tiempo">45min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">3D. Vaciar</div>
+                        <div class="fase-nombre">Destruir array sesión</div>
+                        <div class="fase-archivos">
+                            <strong>pedido.php:</strong><br>
+                            unset($_SESSION['pedido'])<br>
+                            Botón ?action=clear
+                        </div>
+                        <div class="fase-tiempo">15min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+                </div>
+
+                <!-- ÁREA 5: SEGURIDAD -->
+                <div class="area-block seguridad">
+                    <div class="area-header">
+                        <div class="area-emoji">🔐</div>
+                        <div class="area-info">
+                            <div class="area-title">ÁREA 5: SEGURIDAD</div>
+                            <div class="area-meta">
+                                <span class="day-badge">DÍA 3 - MAÑANA</span>
+                                <span class="meta-badge">⏱️ 1h 20min total</span>
+                                <span class="meta-badge">🔴 Sprint 4B+4C juntas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">4A. Login form</div>
+                        <div class="fase-nombre">HTML login</div>
+                        <div class="fase-archivos">
+                            <strong>login.php (crear):</strong><br>
+                            &lt;form method="POST"&gt;<br>
+                            Inputs usuario/password
+                        </div>
+                        <div class="fase-tiempo">30min</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">4B. Autenticación</div>
+                        <div class="fase-nombre">Crear sesión admin</div>
+                        <div class="fase-archivos">
+                            <strong>login.php:</strong><br>
+                            Validar credenciales<br>
+                            $_SESSION['admin'] = true
+                        </div>
+                        <div class="fase-tiempo">30min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+
+                    <div class="fase-item sprint">
+                        <div class="fase-code">4C. Protección</div>
+                        <div class="fase-nombre">Guards en páginas</div>
+                        <div class="fase-archivos">
+                            <strong>Todos los archivos:</strong><br>
+                            if(!isset($_SESSION['admin']))<br>
+                            header redirect login
+                        </div>
+                        <div class="fase-tiempo">20min</div>
+                        <div class="fase-tipo sprint">🔴 SPRINT</div>
+                    </div>
+                </div>
+
+                <!-- ÁREA 6: PULIDO -->
+                <div class="area-block pulido">
+                    <div class="area-header">
+                        <div class="area-emoji">🎨</div>
+                        <div class="area-info">
+                            <div class="area-title">ÁREA 6: PULIDO PROFESIONAL</div>
+                            <div class="area-meta">
+                                <span class="day-badge">DÍAS 4-7</span>
+                                <span class="meta-badge">⏱️ 1-2h + iteración libre</span>
+                                <span class="meta-badge">✅ Pausable e iterativo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fase-item">
+                        <div class="fase-code">5. Polish</div>
+                        <div class="fase-nombre">CSS, UX, responsive</div>
+                        <div class="fase-archivos">
+                            <strong>styles.css (crear):</strong><br>
+                            Estilos tabla, forms, botones<br>
+                            Mensajes éxito/error, responsive<br>
+                            <strong>Extras opcionales:</strong> editar/eliminar, búsqueda, contador carrito
+                        </div>
+                        <div class="fase-tiempo">1-2h</div>
+                        <div class="fase-tipo pausable">Pausable</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ESTRUCTURA DE ARCHIVOS -->
+        <div class="archivos-section">
+<span class="file">/proyecto</span>
+├── <span class="file">config.php</span>          <span class="comment">// Conexión PDO con try/catch</span>
+├── <span class="file">login.php</span>           <span class="comment">// Formulario + validación + sesión</span>
+├── <span class="file">productos.php</span>       <span class="comment">// Listado + paginación + filtros</span>
+├── <span class="file">nuevo.php</span>           <span class="comment">// Formulario INSERT con validación</span>
+├── <span class="file">pedido.php</span>          <span class="comment">// Lista de pedido con sesión</span>
+└── <span class="file">styles.css</span>          <span class="comment">// Estilos profesionales</span>
+        </div>
+
+        <!-- INFO BOXES -->
+        <div class="info-boxes">
+            <div class="info-box warning">
+                <h3>⚠️ Fases SPRINT obligatorias</h3>
+                <ul>
+                    <li><strong>1B + 1D:</strong> Paginación con filtros - lógica interdependiente</li>
+                    <li><strong>2B + 2D:</strong> INSERT sin redirect rompe el flujo</li>
+                    <li><strong>3C:</strong> Query IN() requiere entender arrays</li>
+                    <li><strong>4B + 4C:</strong> Login sin protección no tiene sentido</li>
+                </ul>
+            </div>
+
+            <div class="info-box success">
+                <h3>✅ Checkpoints de testing</h3>
+                <ul>
+                    <li><strong>Post Área 2:</strong> Navegar y filtrar OK</li>
+                    <li><strong>Post Área 3:</strong> Insertar y ver producto</li>
+                    <li><strong>Post Área 4:</strong> Añadir al pedido y visualizar</li>
+                    <li><strong>Post Área 5:</strong> Acceso bloqueado sin login</li>
+                </ul>
+            </div>
+
+            <div class="info-box info">
+                <h3>💡 Ventajas de tu perfil</h3>
+                <ul>
+                    <li><strong>SQL dominado:</strong> Solo adaptas sintaxis PDO</li>
+                    <li><strong>HTML/CSS experto:</strong> Frontend sin fricción</li>
+                    <li><strong>Python OOP:</strong> Conceptos ya interiorizados</li>
+                    <li><strong>Resultado:</strong> Nivel superior al promedio</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- RESUMEN FINAL -->
+        <div class="progress-summary">
+            <h2>📊 Estimación Total del Proyecto</h2>
+            <div class="progress-stats">
+                <div class="stat">
+                    <div class="stat-value">5.5-7h</div>
+                    <div class="stat-label">Código funcional</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1-2h</div>
+                    <div class="stat-label">CSS y polish</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">6.5-9h</div>
+                    <div class="stat-label">TOTAL</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.95;">
+                Con una semana productiva (3-4 días código + 3 días extras) sale un proyecto de nivel muy superior. 
+                Tu background en HTML/CSS, SQL y OOP te da ventaja significativa sobre el promedio.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
