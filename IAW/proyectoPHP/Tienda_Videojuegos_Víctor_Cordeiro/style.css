@@ -1,0 +1,369 @@
+/* ========== RESET Y BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: #e8e8e8;
+    color: #2c2c2c;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+body > h1,
+body > nav,
+body > h3,
+body > div,
+body > table,
+body > form,
+body > p {
+    background: white;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    padding: 20px 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #d4d4d4;
+}
+
+/* ========== TÍTULOS ========== */
+h1 {
+    color: #1a1a1a;
+    font-size: 26px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #2c2c2c;
+    text-align: center;
+}
+
+h3 {
+    color: #4a4a4a;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 40px !important;
+    margin-bottom: 0 !important;
+}
+
+/* ========== NAVEGACIÓN ========== */
+nav {
+    background: #f5f5f5 !important;
+    border-left: 4px solid #2c2c2c !important;
+}
+
+nav a {
+    color: #2c2c2c;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    margin-right: 8px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+nav a:hover {
+    background: #2c2c2c;
+    color: white;
+}
+
+/* ========== BOTONES Y FILTROS ========== */
+body > div > a {
+    display: inline-block;
+    background: #2c2c2c;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 2px solid #2c2c2c;
+}
+
+body > div > a:hover {
+    background: white;
+    color: #2c2c2c;
+}
+
+/* ========== MENSAJE FILTRO ACTIVO ========== */
+body > p {
+    background: #f5f5f5 !important;
+    color: #2c2c2c;
+    font-weight: 500;
+    border-left: 4px solid #2c2c2c !important;
+}
+
+body > p strong {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+/* ========== TABLAS ========== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    padding: 0 !important;
+    background: white !important;
+}
+
+thead {
+    background: #2c2c2c;
+    color: white;
+}
+
+th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8e8e8;
+    color: #2c2c2c;
+}
+
+tbody tr {
+    transition: background 0.15s;
+}
+
+tbody tr:hover {
+    background: #f9f9f9;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tfoot {
+    background: #f5f5f5;
+    border-top: 2px solid #2c2c2c;
+}
+
+tfoot td {
+    padding: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+/* Links dentro de tablas */
+td a {
+    color: white;
+    background: #4a4a4a;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 14px;
+    transition: all 0.2s;
+    display: inline-block;
+    font-size: 13px;
+}
+
+td a:hover {
+    background: #2c2c2c;
+}
+
+/* ========== FORMULARIOS ========== */
+form {
+    background: #fafafa !important;
+    border: 1px solid #d4d4d4 !important;
+}
+
+form > div {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 14px;
+    border: 2px solid #d4d4d4;
+    background: white;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2c2c2c;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2c2c2c;
+}
+
+button[type="submit"],
+button {
+    background: #2c2c2c;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #1a1a1a;
+}
+
+button:active {
+    background: #000;
+}
+
+/* ========== MENSAJES DE ERROR ========== */
+.error,
+div[style*="color: red"] {
+    background: #fff5f5 !important;
+    border: 2px solid #d4d4d4 !important;
+    border-left: 5px solid #2c2c2c !important;
+    color: #2c2c2c !important;
+    padding: 18px !important;
+    margin: 20px auto !important;
+    max-width: 1200px;
+}
+
+.error strong {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #1a1a1a;
+}
+
+.error ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.error li {
+    margin: 8px 0;
+    color: #2c2c2c;
+}
+
+/* ========== PAGINACIÓN ========== */
+/* Contenedor de paginación */
+body > div:last-of-type {
+    text-align: center;
+}
+
+/* Texto "Página X de Y" */
+body > div > p {
+    display: inline-block;
+    margin-right: 15px;
+    color: #4a4a4a;
+    font-size: 14px;
+    font-weight: 500;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Página actual (strong) */
+body > div strong {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 3px;
+    background: #2c2c2c;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Links de paginación */
+body > div > a[href*="pagina"] {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 3px;
+    background: white;
+    border: 2px solid #2c2c2c;
+    color: #2c2c2c;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s;
+    box-shadow: none !important;
+}
+
+body > div > a[href*="pagina"]:hover {
+    background: #2c2c2c;
+    color: white;
+}
+
+/* ========== LOGIN PAGE ========== */
+body > form {
+    max-width: 480px;
+    margin: 40px auto;
+}
+
+form + p {
+    text-align: center;
+    margin-top: 20px;
+    color: #6a6a6a;
+    font-size: 13px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    body > h1,
+    body > nav,
+    body > h3,
+    body > div,
+    body > table,
+    body > form,
+    body > p {
+        padding: 15px 20px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    table {
+        font-size: 13px;
+    }
+    
+    th, td {
+        padding: 12px 10px;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    select {
+        max-width: 100%;
+    }
+    
+    body > div > a {
+        display: block;
+        margin: 8px 0;
+        text-align: center;
+    }
+}

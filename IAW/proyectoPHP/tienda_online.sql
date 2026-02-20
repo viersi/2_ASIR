@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 16-02-2026 a las 11:38:29
+-- Tiempo de generación: 19-02-2026 a las 08:34:03
 -- Versión del servidor: 8.4.3
 -- Versión de PHP: 8.3.28
 
@@ -60,7 +60,9 @@ INSERT INTO `productos` (`id`, `nombre`, `consola`, `precio`, `stock`) VALUES
 (18, 'Red Dead Redemption 2', 'PC', 54.99, 11),
 (19, 'The Witcher 3', 'PC', 39.99, 25),
 (20, 'Baldur\'s Gate 3', 'PC', 69.99, 6),
-(21, 'test', 'PC', 67.67, 67);
+(21, 'test', 'PC', 67.67, 67),
+(22, 'ola', 'Xbox', 45, 45),
+(23, 'test2', 'Xbox', 55, 6);
 
 --
 -- Índices para tablas volcadas
@@ -80,7 +82,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
